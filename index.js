@@ -31,9 +31,8 @@ router.post('/candies', (req, res) => {
 });
 
 router.get('/pinatas', (req, res) => {
-    const { body } = req;
-    var ret = sweetToothService.createCandy(body);
-    return res.status(201).send(ret);
+    var ret = sweetToothService.getAllPinatas();
+    return res.json(ret);
 });
 
 app.use(bodyParser.json());

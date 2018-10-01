@@ -34,7 +34,8 @@ const sweetToothService = () => {
         getAllCandies,
         getCandyById,
         getAllOffers,
-        createCandy
+        createCandy,
+        getAllPinatas
     }
 }
 
