@@ -35,6 +35,13 @@ router.get('/pinatas', (req, res) => {
     return res.json(ret);
 });
 
+router.get('/pinatas/:id', (req, res) => {
+    const { id } = req.params;
+    var ret = sweetToothService.getPinataById(id);
+    return res.json(ret);
+});
+
+
 app.use(bodyParser.json());
 app.use('/api', router);
 

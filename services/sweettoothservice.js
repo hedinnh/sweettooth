@@ -12,7 +12,7 @@ const sweetToothService = () => {
         var offers = candies.offers;
         offers.forEach(element => {
             element.candies.forEach(innerelem => {
-                element.candies[innerelem-1] = getCandyById(innerelem);
+                element.candies[innerelem - 1] = getCandyById(innerelem);
             })
         });
         return offers;
@@ -27,15 +27,27 @@ const sweetToothService = () => {
     }
     const getAllPinatas = () => {
         var pinatas = candies.pinatas;
+        pinatas.forEach(e => {
+            delete e.surprise;
+        })
         return pinatas;
     }
+    const getPinataById = (id) => {
+        var pinata = candies.pinatas.filter(u => u.id == id);
+        pinata.forEach(e => {
+            delete e.surprise;
+        })
+        return pinata;
+    }
+
 
     return {
         getAllCandies,
         getCandyById,
         getAllOffers,
         createCandy,
-        getAllPinatas
+        getAllPinatas,
+        getPinataById
     }
 }
 
