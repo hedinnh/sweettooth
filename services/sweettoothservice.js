@@ -12,7 +12,7 @@ const sweetToothService = () => {
         var offers = candies.offers;
         offers.forEach(element => {
             element.candies.forEach(innerelem => {
-                element.candies[innerelem - 1] = getCandyById(innerelem);
+                element.candies[element.candies.indexOf(innerelem)] = getCandyById(innerelem);
             })
         });
         return offers;
