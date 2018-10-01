@@ -40,14 +40,21 @@ const sweetToothService = () => {
         return pinata;
     }
 
-
+    const createPinata = (pinata) => {
+        let highestId = 0;
+        candies.pinatas.forEach(element => { if (element.id > highestId) { highestId = element.id } });
+        pinata.id = highestId + 1;
+        candies.pinatas.push(pinata);
+        return pinata;
+    }
     return {
         getAllCandies,
         getCandyById,
         getAllOffers,
         createCandy,
         getAllPinatas,
-        getPinataById
+        getPinataById,
+        createPinata
     }
 }
 

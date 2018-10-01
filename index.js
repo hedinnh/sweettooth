@@ -41,6 +41,11 @@ router.get('/pinatas/:id', (req, res) => {
     return res.json(ret);
 });
 
+router.post('/pinatas', (req, res) => {
+    const { body } = req;
+    var ret = sweetToothService.createPinata(body);
+    return res.status(201).send(ret);
+});
 
 app.use(bodyParser.json());
 app.use('/api', router);
