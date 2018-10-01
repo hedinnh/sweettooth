@@ -48,10 +48,28 @@ router.post('/pinatas', (req, res) => {
     return res.status(201).send(ret);
 });
 
+router.get('/pinatas/:id/hit', (req, res) => {
+    const { id } = req.params;
+    var locked = false;
+    var ret = sweetToothService.hitPinata(id);
+    console.log(ret)
+    if (ret === -1) { return res.status(404).send(); }
+    if(locked) {
+        return res.status(423).send();
+    }
+    if (!ret) { 
+        locked = true;
+        return res.status(204).send(); 
+    }
+    if(locked == false) {
+        return res.status(200).send(ret);
+    }
+});
+
 app.use(bodyParser.json());
 app.use('/api', router);
 
 
 app.listen(3000, () => {
-    console.log('Example app listening on port 3000!');
+    console.log('app listening on port 3000!');
 });
