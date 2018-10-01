@@ -1,0 +1,45 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+const router = express.Router();
+const sweetToothService = require('./services/sweetToothService');
+
+
+
+router.get('/candies', (req, res) => {
+    return res.status(200).send(sweetToothService.getAllCandies());
+});
+
+router.get('/candies/:id', (req, res) => {
+    const { id } = req.params;
+    const candy = sweetToothService.getCandyById(id);
+    if (candy === -1) { return res.status(404).send(); }
+    return res.json(candy);
+});
+
+
+router.get('/offers/', (req, res) => {
+    const { id } = req.params;
+    const candy = sweetToothService.getAllOffers();
+    return res.json(candy);
+});
+
+router.post('/candies', (req, res) => {
+    const { body } = req;
+    var ret = sweetToothService.createCandy(body);
+    return res.status(201).send(ret);
+});
+
+router.get('/pinatas', (req, res) => {
+    const { body } = req;
+    var ret = sweetToothService.createCandy(body);
+    return res.status(201).send(ret);
+});
+
+app.use(bodyParser.json());
+app.use('/api', router);
+
+
+app.listen(3000, () => {
+    console.log('Example app listening on port 3000!');
+});
