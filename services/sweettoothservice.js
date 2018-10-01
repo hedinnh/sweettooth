@@ -48,6 +48,19 @@ const sweetToothService = () => {
         candies.pinatas.push(pinata);
         return pinata;
     }
+
+    const hitPinata = (id) => {
+        var pinata = candies.pinatas.filter(u => u.id == id);
+        var locked = false;
+        if(pinata[id - 1].maximumHits === 0) {
+            locked = true;
+            return pinata[id-1].surprise;
+        } else {
+            pinata[id - 1].maximumHits = pinata[id - 1].maximumHits - 1;
+            return false;
+        }
+       
+    }
     return {
         getAllCandies,
         getCandyById,
@@ -55,7 +68,8 @@ const sweetToothService = () => {
         createCandy,
         getAllPinatas,
         getPinataById,
-        createPinata
+        createPinata,
+        hitPinata
     }
 }
 
