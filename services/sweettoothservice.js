@@ -37,6 +37,7 @@ const sweetToothService = () => {
         pinata.forEach(e => {
             delete e.surprise;
         })
+        if (pinata.length === 0) { return -1; }
         return pinata;
     }
 
