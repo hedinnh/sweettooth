@@ -59,7 +59,7 @@ const sweetToothService = () => {
             pinata.maximumHits = -1;
             return pinata.surprise;
         } else {
-            pinata.maximumHits = pinata.maximumHits - 1;
+            pinata.maximumHits -= 1;
             return false;
         }   
     }
