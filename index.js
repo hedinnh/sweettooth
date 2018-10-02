@@ -15,7 +15,6 @@ router.get('/candies/:id', (req, res) => {
     return res.json(candy);
 });
 
-
 router.get('/offers/', (req, res) => {
     const { id } = req.params;
     const candy = sweetToothService.getAllOffers();
@@ -62,7 +61,6 @@ router.get('/pinatas/:id/hit', (req, res) => {
 
 app.use(bodyParser.json());
 app.use('/api', router);
-
 
 app.listen(3000, () => {
     console.log('app listening on port 3000!');

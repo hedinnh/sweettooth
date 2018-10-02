@@ -8,6 +8,7 @@ const sweetToothService = () => {
         if (candy.length === 0) { return -1; }
         return candy[0];
     }
+
     const getAllOffers = () => {
         var offers = candies.offers;
         offers.forEach(element => {
@@ -17,6 +18,7 @@ const sweetToothService = () => {
         });
         return offers;
     }
+
     const createCandy = (candy) => {
         let highestId = 0;
         candies.candies.forEach(element => { if (element.id > highestId) { highestId = element.id } });
@@ -24,6 +26,7 @@ const sweetToothService = () => {
         candies.candies.push(candy);
         return candy;
     }
+
     const getAllPinatas = () => {
         var pinatas = candies.pinatas;
         pinatas.forEach(e => {
@@ -31,12 +34,13 @@ const sweetToothService = () => {
         })
         return pinatas;
     }
+
     const getPinataById = (id) => {
         var pinata = candies.pinatas.filter(u => u.id == id);
         pinata.forEach(e => {
             delete e.surprise;
         })
-        if (pinata.length === 0) { return -1; }
+        if (pinata.length === 0) return -1;
         return pinata;
     }
 
