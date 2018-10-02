@@ -16,7 +16,6 @@ const sweetToothService = () => {
             })
         });
         return offers;
-
     }
     const createCandy = (candy) => {
         let highestId = 0;
@@ -50,16 +49,15 @@ const sweetToothService = () => {
     }
 
     const hitPinata = (id) => {
-        var pinata = candies.pinatas.filter(u => u.id == id);
-        var locked = false;
-        if(pinata[id - 1].maximumHits === 0) {
-            locked = true;
-            return pinata[id-1].surprise;
+        var pinata = candies.pinatas.filter(u => u.id == id)[0];
+        if(pinata.maximumHits === -1) return true;
+        if(pinata.maximumHits === 0) {
+            pinata.maximumHits = -1;
+            return pinata.surprise;
         } else {
-            pinata[id - 1].maximumHits = pinata[id - 1].maximumHits - 1;
+            pinata.maximumHits = pinata.maximumHits - 1;
             return false;
-        }
-       
+        }   
     }
     return {
         getAllCandies,
