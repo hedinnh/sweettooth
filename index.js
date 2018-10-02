@@ -50,7 +50,6 @@ router.get('/pinatas/:id/hit', (req, res) => {
     const { id } = req.params;
     var ret = sweetToothService.hitPinata(id);
     if (!ret ) { 
-        locked = true;
         return res.status(204).send(); 
     }
     if(typeof ret === "string") {
