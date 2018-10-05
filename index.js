@@ -48,13 +48,15 @@ router.post('/pinatas', (req, res) => {
 router.get('/pinatas/:id/hit', (req, res) => {
     const { id } = req.params;
     var ret = sweetToothService.hitPinata(id);
-    if (!ret ) { 
-        return res.status(204).send(); 
+    if (ret === -1) { return res.status(404).send(); }
+
+    if (!ret) {
+        return res.status(204).send();
     }
-    if(typeof ret === "string") {
+    if (typeof ret === "string") {
         return res.status(200).send(ret);
     }
-    if(ret) {
+    if (ret) {
         return res.status(423).send();
     }
 });

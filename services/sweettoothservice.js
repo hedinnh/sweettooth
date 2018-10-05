@@ -54,14 +54,16 @@ const sweetToothService = () => {
 
     const hitPinata = (id) => {
         var pinata = candies.pinatas.filter(u => u.id == id)[0];
-        if(pinata.maximumHits === -1) return true;
-        if(pinata.maximumHits === 0) {
+
+        if (pinata === undefined || pinata === null) { return -1; }
+        if (pinata.maximumHits === -1) return true;
+        if (pinata.maximumHits === 0) {
             pinata.maximumHits = -1;
             return pinata.surprise;
         } else {
             pinata.maximumHits -= 1;
             return false;
-        }   
+        }
     }
     return {
         getAllCandies,
